@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASH BANGAX | Futuristic Web & IoT Developer</title>
+    <title>ASH BANGAX | Web Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00f0ff;
-            --primary-dark: #0066ff;
-            --secondary: #ff00f0;
-            --secondary-dark: #cc00ff;
-            --accent: #00ff88;
-            --accent-dark: #00cc66;
-            --dark: #0a0a1a;
-            --darker: #050510;
-            --light: #e0f0ff;
-            --neon-glow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary-dark);
-            --neon-glow-accent: 0 0 10px var(--accent), 0 0 20px var(--accent), 0 0 30px var(--accent-dark);
+            --primary: #663399; /* Rebecca Purple */
+            --primary-dark: #4b2573;
+            --secondary: #ff8c00; /* Dark Orange */
+            --secondary-dark: #e67e00;
+            --accent: #663399;
+            --accent-dark: #4b2573;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #f8f9fa;
+            --light-dark: #e9ecef;
+            --text: #333333;
+            --text-light: #f8f9fa;
             --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             --fast-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             --section-padding: 10rem 0;
             --border-radius: 16px;
-            --glass-bg: rgba(10, 10, 30, 0.25);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --glass-backdrop: blur(16px);
+        }
+
+        [data-theme="dark"] {
+            --primary: #663399;
+            --primary-dark: #4b2573;
+            --secondary: #ff8c00;
+            --secondary-dark: #e67e00;
+            --accent: #663399;
+            --accent-dark: #4b2573;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #f8f9fa;
+            --light-dark: #e9ecef;
+            --text: #f8f9fa;
+            --text-light: #f8f9fa;
+            --glass-bg: rgba(26, 26, 46, 0.5);
             --glass-border: 1px solid rgba(255, 255, 255, 0.1);
             --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            --glass-backdrop: blur(16px);
         }
 
         * {
@@ -39,21 +58,23 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
-            background-color: var(--darker);
-            color: var(--light);
+            background-color: var(--light);
+            color: var(--text);
         }
 
         body {
             overflow-x: hidden;
             position: relative;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 96, 255, 0.1) 0%, transparent 30%),
-                        radial-gradient(circle at 80% 70%, rgba(255, 0, 240, 0.1) 0%, transparent 30%);
+            background-color: var(--light);
+            color: var(--text);
+            transition: background-color 0.5s ease, color 0.5s ease;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             letter-spacing: 1px;
+            color: var(--text);
         }
 
         a {
@@ -79,11 +100,10 @@
             margin-bottom: 2rem;
             position: relative;
             display: inline-block;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: var(--neon-glow);
         }
 
         .section-title::after {
@@ -93,13 +113,13 @@
             left: 0;
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
-            box-shadow: var(--neon-glow);
         }
 
         .section-subtitle {
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.8;
             font-size: 1.3rem;
             max-width: 700px;
             margin-bottom: 4rem;
@@ -113,7 +133,7 @@
             justify-content: center;
             padding: 1rem 2.5rem;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--darker);
+            color: white;
             border-radius: 50px;
             font-weight: 600;
             transition: var(--transition);
@@ -126,8 +146,6 @@
             font-family: 'Orbitron', sans-serif;
             letter-spacing: 1px;
             text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-            border: 1px solid rgba(0, 240, 255, 0.3);
         }
 
         .btn::before {
@@ -137,7 +155,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             opacity: 0;
             transition: var(--transition);
             z-index: -1;
@@ -149,29 +167,26 @@
 
         .btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 25px rgba(0, 240, 255, 0.8), 0 5px 30px rgba(0, 240, 255, 0.4);
-            color: var(--darker);
+            color: white;
         }
 
         .btn-outline {
             background: transparent;
             color: var(--primary);
-            border: 1px solid var(--primary);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            border: 2px solid var(--primary);
         }
 
         .btn-outline:hover {
-            color: var(--darker);
+            color: white;
         }
 
         .btn-accent {
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
         }
 
         .btn-accent::before {
-            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
 
         .glass-card {
@@ -192,7 +207,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(0, 102, 255, 0.1));
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.1), rgba(255, 140, 0, 0.1));
             opacity: 0;
             transition: var(--transition);
             z-index: -1;
@@ -204,7 +219,7 @@
 
         .glass-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
         }
 
         /* Header */
@@ -216,14 +231,21 @@
             z-index: 1000;
             transition: var(--transition);
             padding: 2rem 0;
+            background-color: rgba(248, 249, 250, 0.9);
+        }
+
+        [data-theme="dark"] header {
+            background-color: rgba(26, 26, 46, 0.9);
         }
 
         header.scrolled {
-            background: rgba(5, 5, 16, 0.8);
-            backdrop-filter: blur(10px);
             padding: 1rem 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(102, 51, 153, 0.1);
+        }
+
+        [data-theme="dark"] header.scrolled {
             box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 240, 255, 0.1);
         }
 
         nav {
@@ -240,7 +262,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: var(--neon-glow);
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -260,7 +281,8 @@
             font-weight: 500;
             font-size: 1.1rem;
             position: relative;
-            color: rgba(224, 240, 255, 0.8);
+            color: var(--text);
+            opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -283,8 +305,8 @@
 
         .nav-links a:hover,
         .nav-links a.active {
+            opacity: 1;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .mobile-menu-btn {
@@ -300,7 +322,21 @@
 
         .mobile-menu-btn:hover {
             transform: scale(1.1);
-            text-shadow: var(--neon-glow);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+            margin-left: 2rem;
+            transition: var(--fast-transition);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            color: var(--primary);
         }
 
         /* Hero Section */
@@ -311,29 +347,7 @@
             padding-top: 100px;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-        }
-
-        .hero-grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: -1;
-            opacity: 0.5;
+            background-color: var(--light);
         }
 
         .hero-content {
@@ -350,77 +364,42 @@
         .hero-image {
             flex: 1;
             position: relative;
-            perspective: 1000px;
         }
 
-        .hero-hologram {
+        .hero-image-container {
             width: 100%;
             max-width: 600px;
             height: 600px;
             position: relative;
-            transform-style: preserve-3d;
-            animation: float 8s ease-in-out infinite;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
-        .hologram-base {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 20px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            filter: blur(10px);
-            opacity: 0.8;
+        [data-theme="dark"] .hero-image-container {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
-        .hologram-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 240, 0.1));
-            border-radius: 20px;
-            box-shadow: 
-                inset 0 0 50px rgba(0, 240, 255, 0.3),
-                inset 0 0 100px rgba(255, 0, 240, 0.2);
-            border: 1px solid rgba(0, 240, 255, 0.3);
-            backdrop-filter: blur(5px);
-            transform: rotateX(75deg) rotateZ(-5deg);
-            transform-style: preserve-3d;
-        }
-
-        .hologram-image {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotateX(75deg) rotateZ(-5deg);
-            width: 80%;
-            height: 80%;
-            background: url('https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover;
-            border-radius: 10px;
-            box-shadow: 0 0 50px rgba(0, 240, 255, 0.5);
-            filter: hue-rotate(0deg);
-            animation: hueRotate 8s infinite alternate;
+            object-fit: cover;
         }
 
         .hero-title {
             font-size: 4.5rem;
             margin-bottom: 2rem;
             line-height: 1.1;
-            text-shadow: var(--neon-glow);
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: textGlow 3s infinite alternate;
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
-            color: rgba(224, 240, 255, 0.8);
+            color: var(--text);
+            opacity: 0.8;
             margin-bottom: 3rem;
             max-width: 600px;
             line-height: 1.8;
@@ -445,13 +424,13 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(102, 51, 153, 0.1);
             color: var(--primary);
             transition: var(--transition);
             font-size: 1.5rem;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
         }
 
         .social-links a::before {
@@ -472,9 +451,8 @@
         }
 
         .social-links a:hover {
-            color: var(--darker);
+            color: white;
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
         }
 
         .scroll-down {
@@ -488,7 +466,6 @@
             color: var(--primary);
             font-weight: 500;
             animation: bounce 2s infinite;
-            text-shadow: var(--neon-glow);
         }
 
         .scroll-down i {
@@ -500,6 +477,11 @@
         #about {
             position: relative;
             overflow: hidden;
+            background-color: var(--light-dark);
+        }
+
+        [data-theme="dark"] #about {
+            background-color: var(--dark);
         }
 
         .about-content {
@@ -511,29 +493,25 @@
         .about-image {
             flex: 1;
             position: relative;
-            perspective: 1000px;
         }
 
-        .about-hologram {
+        .about-image-container {
             width: 100%;
             height: 500px;
             position: relative;
-            transform-style: preserve-3d;
-            animation: float 6s ease-in-out infinite 1s;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
-        .about-hologram .hologram-effect {
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 240, 255, 0.1));
-            box-shadow: 
-                inset 0 0 50px rgba(0, 255, 136, 0.3),
-                inset 0 0 100px rgba(0, 240, 255, 0.2);
-            border: 1px solid rgba(0, 255, 136, 0.3);
+        [data-theme="dark"] .about-image-container {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
-        .about-hologram .hologram-image {
-            background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80') center/cover;
-            filter: hue-rotate(60deg);
-            animation: hueRotate 6s infinite alternate 1s;
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .about-text {
@@ -543,16 +521,16 @@
         .about-text h3 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: var(--neon-glow-accent);
         }
 
         .about-text p {
             margin-bottom: 2rem;
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.8;
             line-height: 1.8;
             font-size: 1.2rem;
             font-weight: 300;
@@ -565,8 +543,7 @@
         .skills h4 {
             margin-bottom: 2rem;
             font-size: 1.5rem;
-            color: var(--accent);
-            text-shadow: var(--neon-glow-accent);
+            color: var(--primary);
         }
 
         .skill-tags {
@@ -576,14 +553,14 @@
         }
 
         .skill-tag {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(102, 51, 153, 0.1);
             color: var(--primary);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
             transition: var(--fast-transition);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
             display: flex;
             align-items: center;
             gap: 0.8rem;
@@ -596,15 +573,19 @@
 
         .skill-tag:hover {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--darker);
+            color: white;
             transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
             border-color: transparent;
         }
 
         /* Services Section */
         #services {
             position: relative;
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] #services {
+            background-color: var(--darker);
         }
 
         .services-grid {
@@ -619,8 +600,8 @@
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
-            background: rgba(10, 10, 30, 0.3);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid rgba(102, 51, 153, 0.1);
             backdrop-filter: blur(10px);
             transition: var(--transition);
         }
@@ -632,14 +613,18 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: var(--transition);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            background: rgba(10, 10, 30, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            background: rgba(102, 51, 153, 0.05);
+        }
+
+        [data-theme="dark"] .service-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .service-card:hover::before {
@@ -650,12 +635,11 @@
         .service-icon {
             font-size: 4rem;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             transition: var(--transition);
-            text-shadow: var(--neon-glow);
         }
 
         .service-card:hover .service-icon {
@@ -666,11 +650,11 @@
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .service-card p {
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.8;
             margin-bottom: 2.5rem;
             line-height: 1.8;
             font-size: 1.1rem;
@@ -680,7 +664,11 @@
         /* Pricing Section */
         #pricing {
             position: relative;
-            background: radial-gradient(circle at center, rgba(0, 102, 255, 0.05) 0%, transparent 50%);
+            background-color: var(--light-dark);
+        }
+
+        [data-theme="dark"] #pricing {
+            background-color: var(--dark);
         }
 
         .pricing-grid {
@@ -696,31 +684,29 @@
             position: relative;
             overflow: hidden;
             border-radius: var(--border-radius);
-            background: rgba(10, 10, 30, 0.3);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid rgba(102, 51, 153, 0.1);
             backdrop-filter: blur(10px);
             transition: var(--transition);
             z-index: 1;
         }
 
         .pricing-card.popular {
-            border: 1px solid var(--accent);
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.2);
+            border: 2px solid var(--secondary);
         }
 
         .popular-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--darker);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
         }
 
         .pricing-card::before {
@@ -730,7 +716,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             transition: var(--transition);
             z-index: -1;
         }
@@ -742,28 +728,31 @@
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .pricing-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .pricing-card h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .price {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 2rem;
-            color: var(--accent);
-            text-shadow: var(--neon-glow-accent);
+            color: var(--secondary);
             font-family: 'Orbitron', sans-serif;
         }
 
         .price span {
             font-size: 1.5rem;
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.7;
         }
 
         .pricing-features {
@@ -773,7 +762,8 @@
         .pricing-features li {
             list-style: none;
             margin-bottom: 1rem;
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.8;
             font-size: 1.1rem;
             position: relative;
             padding-left: 2rem;
@@ -786,12 +776,17 @@
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: var(--accent);
+            color: var(--secondary);
         }
 
         /* Portfolio Section */
         #portfolio {
             position: relative;
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] #portfolio {
+            background-color: var(--darker);
         }
 
         .portfolio-header {
@@ -808,8 +803,8 @@
         }
 
         .filter-btn {
-            background: rgba(0, 240, 255, 0.1);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            background: rgba(102, 51, 153, 0.1);
+            border: 1px solid rgba(102, 51, 153, 0.3);
             padding: 0.8rem 2rem;
             cursor: pointer;
             font-weight: 600;
@@ -825,9 +820,8 @@
 
         .filter-btn.active, .filter-btn:hover {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--darker);
+            color: white;
             border-color: transparent;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
         }
 
         .portfolio-grid {
@@ -842,8 +836,8 @@
             position: relative;
             transition: var(--transition);
             aspect-ratio: 16/9;
-            background: rgba(10, 10, 30, 0.3);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid rgba(102, 51, 153, 0.1);
             backdrop-filter: blur(5px);
         }
 
@@ -854,7 +848,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1), rgba(255, 0, 240, 0.1));
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.1), rgba(255, 140, 0, 0.1));
             opacity: 0;
             transition: var(--transition);
             z-index: 1;
@@ -866,7 +860,11 @@
 
         .portfolio-item:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .portfolio-item:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .portfolio-img {
@@ -888,7 +886,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(0, 96, 255, 0.9), rgba(0, 240, 255, 0.9));
+            background: linear-gradient(135deg, rgba(102, 51, 153, 0.9), rgba(255, 140, 0, 0.9));
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -911,7 +909,6 @@
             transform: translateY(30px);
             transition: var(--transition);
             transition-delay: 0.1s;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
         .portfolio-overlay p {
@@ -939,8 +936,8 @@
             position: absolute;
             top: 2rem;
             right: 2rem;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: var(--darker);
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
             font-size: 0.9rem;
@@ -951,7 +948,6 @@
             transition: var(--transition);
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
         }
 
         .portfolio-item:hover .portfolio-badge {
@@ -962,7 +958,11 @@
         /* Testimonials Section */
         #testimonials {
             position: relative;
-            background: radial-gradient(circle at center, rgba(255, 0, 240, 0.05) 0%, transparent 50%);
+            background-color: var(--light-dark);
+        }
+
+        [data-theme="dark"] #testimonials {
+            background-color: var(--dark);
         }
 
         .testimonials-container {
@@ -972,21 +972,25 @@
         }
 
         .testimonial-slide {
-            background: rgba(10, 10, 30, 0.5);
+            background: var(--glass-bg);
             padding: 4rem;
             border-radius: var(--border-radius);
             margin: 0 1rem;
             text-align: center;
             transition: var(--transition);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 0, 240, 0.1);
+            border: 1px solid rgba(102, 51, 153, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] .testimonial-slide {
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
         }
 
         .testimonial-content {
             font-size: 1.5rem;
             font-style: italic;
-            color: rgba(224, 240, 255, 0.9);
+            color: var(--text);
             margin-bottom: 3rem;
             line-height: 1.8;
             position: relative;
@@ -1028,7 +1032,6 @@
             margin-bottom: 1.5rem;
             border: 3px solid var(--secondary);
             padding: 3px;
-            box-shadow: 0 0 20px rgba(255, 0, 240, 0.3);
         }
 
         .author-name {
@@ -1036,11 +1039,11 @@
             margin-bottom: 0.5rem;
             font-size: 1.5rem;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .author-title {
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.7;
             font-size: 1.1rem;
         }
 
@@ -1055,7 +1058,7 @@
             width: 16px;
             height: 16px;
             border-radius: 50%;
-            background: rgba(255, 0, 240, 0.3);
+            background: rgba(255, 140, 0, 0.3);
             cursor: pointer;
             transition: var(--fast-transition);
             border: 1px solid var(--secondary);
@@ -1064,13 +1067,17 @@
         .testimonial-dot.active {
             background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
             transform: scale(1.3);
-            box-shadow: 0 0 15px rgba(255, 0, 240, 0.5);
         }
 
         /* Contact Section */
         #contact {
             position: relative;
             overflow: hidden;
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] #contact {
+            background-color: var(--darker);
         }
 
         .contact-container {
@@ -1085,11 +1092,10 @@
         .contact-info h3 {
             font-size: 2.5rem;
             margin-bottom: 2.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: var(--neon-glow);
         }
 
         .contact-details {
@@ -1104,15 +1110,15 @@
             transition: var(--transition);
             padding: 2rem;
             border-radius: var(--border-radius);
-            background: rgba(0, 240, 255, 0.05);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: rgba(102, 51, 153, 0.05);
+            border: 1px solid rgba(102, 51, 153, 0.1);
             backdrop-filter: blur(5px);
         }
 
         .contact-item:hover {
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(102, 51, 153, 0.1);
             transform: translateX(10px);
-            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(102, 51, 153, 0.1);
         }
 
         .contact-icon {
@@ -1123,45 +1129,51 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--darker);
+            color: white;
             font-size: 2rem;
             flex-shrink: 0;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
         }
 
         .contact-text h4 {
             font-size: 1.5rem;
             margin-bottom: 0.8rem;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .contact-text p, .contact-text a {
-            color: rgba(224, 240, 255, 0.7);
+            color: var(--text);
+            opacity: 0.8;
             line-height: 1.8;
             font-size: 1.2rem;
             font-weight: 300;
         }
 
         .contact-text a:hover {
-            color: var(--accent);
-            text-shadow: var(--neon-glow-accent);
+            color: var(--secondary);
         }
 
         .contact-form {
             flex: 1;
             padding: 3rem;
             border-radius: var(--border-radius);
-            background: rgba(10, 10, 30, 0.3);
-            border: 1px solid rgba(0, 240, 255, 0.1);
+            background: var(--glass-bg);
+            border: 1px solid rgba(102, 51, 153, 0.1);
             backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
+        [data-theme="dark"] .contact-form {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
         .contact-form:hover {
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
             transform: translateY(-5px);
+        }
+
+        [data-theme="dark"] .contact-form:hover {
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
         }
 
         .form-group {
@@ -1173,27 +1185,26 @@
             margin-bottom: 1rem;
             font-weight: 600;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
             font-size: 1.2rem;
         }
 
         .form-control {
             width: 100%;
             padding: 1.5rem;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
             border-radius: var(--border-radius);
             font-size: 1.1rem;
             transition: var(--fast-transition);
-            background: rgba(0, 240, 255, 0.05);
-            color: var(--light);
+            background: rgba(102, 51, 153, 0.05);
+            color: var(--text);
             backdrop-filter: blur(5px);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.1);
-            background: rgba(0, 240, 255, 0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+            background: rgba(102, 51, 153, 0.1);
         }
 
         textarea.form-control {
@@ -1205,7 +1216,11 @@
         footer {
             position: relative;
             padding: 8rem 0 4rem;
-            background: linear-gradient(180deg, rgba(5, 5, 16, 0) 0%, rgba(5, 5, 16, 1) 100%);
+            background: linear-gradient(180deg, rgba(248, 249, 250, 0) 0%, rgba(248, 249, 250, 1) 100%);
+        }
+
+        [data-theme="dark"] footer {
+            background: linear-gradient(180deg, rgba(26, 26, 46, 0) 0%, rgba(26, 26, 46, 1) 100%);
         }
 
         footer::before {
@@ -1215,8 +1230,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary));
-            box-shadow: var(--neon-glow);
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
         .footer-content {
@@ -1233,7 +1247,6 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: var(--neon-glow);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1259,7 +1272,8 @@
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: rgba(224, 240, 255, 0.8);
+            color: var(--text);
+            opacity: 0.8;
         }
 
         .footer-links a::after {
@@ -1269,7 +1283,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
             transition: var(--fast-transition);
         }
 
@@ -1278,8 +1292,8 @@
         }
 
         .footer-links a:hover {
+            opacity: 1;
             color: var(--primary);
-            text-shadow: var(--neon-glow);
         }
 
         .footer-social {
@@ -1296,13 +1310,13 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: rgba(0, 240, 255, 0.1);
+            background: rgba(102, 51, 153, 0.1);
             color: var(--primary);
             transition: var(--transition);
             font-size: 1.8rem;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
         }
 
         .footer-social a::before {
@@ -1323,16 +1337,16 @@
         }
 
         .footer-social a:hover {
-            color: var(--darker);
+            color: white;
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
         }
 
         .copyright {
-            color: rgba(224, 240, 255, 0.5);
+            color: var(--text);
+            opacity: 0.5;
             font-size: 1.1rem;
             padding-top: 4rem;
-            border-top: 1px solid rgba(0, 240, 255, 0.1);
+            border-top: 1px solid rgba(102, 51, 153, 0.1);
             text-align: center;
         }
 
@@ -1344,7 +1358,7 @@
             width: 70px;
             height: 70px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: var(--darker);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -1355,8 +1369,7 @@
             visibility: hidden;
             transition: var(--transition);
             z-index: 999;
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
-            border: 1px solid rgba(0, 240, 255, 0.3);
+            border: 1px solid rgba(102, 51, 153, 0.3);
         }
 
         .back-to-top.active {
@@ -1366,18 +1379,7 @@
 
         .back-to-top:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 0 40px rgba(0, 240, 255, 0.7);
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-        }
-
-        /* Floating Particles */
-        .particles-js-canvas-el {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
         }
 
         /* Animations */
@@ -1390,27 +1392,6 @@
             }
         }
 
-        @keyframes hueRotate {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-            100% {
-                filter: hue-rotate(360deg);
-            }
-        }
-
-        @keyframes textGlow {
-            0% {
-                text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary-dark);
-            }
-            50% {
-                text-shadow: 0 0 15px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent-dark);
-            }
-            100% {
-                text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary), 0 0 30px var(--secondary-dark);
-            }
-        }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0) translateX(-50%);
@@ -1420,21 +1401,6 @@
             }
             60% {
                 transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
             }
         }
 
@@ -1490,17 +1456,21 @@
                 width: 80%;
                 max-width: 350px;
                 height: 100vh;
-                background: rgba(5, 5, 16, 0.95);
+                background: rgba(248, 249, 250, 0.95);
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
                 padding: 2rem;
                 gap: 3rem;
                 transition: var(--transition);
-                box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3);
+                box-shadow: 5px 0 30px rgba(0, 0, 0, 0.1);
                 z-index: 1000;
                 backdrop-filter: blur(10px);
-                border-right: 1px solid rgba(0, 240, 255, 0.1);
+                border-right: 1px solid rgba(102, 51, 153, 0.1);
+            }
+
+            [data-theme="dark"] .nav-links {
+                background: rgba(26, 26, 46, 0.95);
             }
             
             .nav-links.active {
@@ -1624,13 +1594,13 @@
         }
     </style>
 </head>
-<body>
+<body data-theme="light">
     <!-- Header -->
     <header id="header">
         <div class="container">
             <nav>
                 <a href="#" class="logo">
-                    <i class="fas fa-robot logo-icon"></i>
+                    <i class="fas fa-code logo-icon"></i>
                     Ash<span>Bangax</span>
                 </a>
                 <ul class="nav-links">
@@ -1641,6 +1611,9 @@
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <button class="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -1650,20 +1623,17 @@
 
     <!-- Hero Section -->
     <section id="hero" class="section">
-        <div id="particles-js" class="particles-js-canvas-el"></div>
-        <div class="hero-grid"></div>
-        
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text animate-on-scroll">
-                    <h1 class="hero-title">Welcome to 2050<br>Web & IoT Development</h1>
-                    <p class="hero-subtitle">I craft immersive digital experiences that bridge the gap between today and tomorrow, combining cutting-edge web technologies with innovative IoT solutions.</p>
+                    <h1 class="hero-title">Web Development<br>Done Right</h1>
+                    <p class="hero-subtitle">I craft beautiful, functional websites and applications with a focus on user experience and modern technologies.</p>
                     <div class="hero-btns">
                         <a href="#contact" class="btn btn-accent">
                             <i class="fas fa-paper-plane"></i> Start Project
                         </a>
                         <a href="#portfolio" class="btn btn-outline">
-                            <i class="fas fa-eye"></i> View Innovations
+                            <i class="fas fa-eye"></i> View Work
                         </a>
                     </div>
                     <div class="social-links">
@@ -1674,10 +1644,8 @@
                     </div>
                 </div>
                 <div class="hero-image animate-on-scroll" style="transition-delay: 0.2s;">
-                    <div class="hero-hologram">
-                        <div class="hologram-effect"></div>
-                        <div class="hologram-image"></div>
-                        <div class="hologram-base"></div>
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Web Development" class="hero-img">
                     </div>
                 </div>
             </div>
@@ -1692,36 +1660,34 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">About The Developer</h2>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Meet the visionary behind these futuristic digital experiences and my journey into tomorrow's technology.</p>
+            <h2 class="section-title animate-on-scroll">About Me</h2>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Learn about my journey, skills, and approach to web development.</p>
             
             <div class="about-content">
                 <div class="about-image animate-on-scroll">
-                    <div class="about-hologram">
-                        <div class="hologram-effect"></div>
-                        <div class="hologram-image"></div>
-                        <div class="hologram-base"></div>
+                    <div class="about-image-container">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Ash Bangax" class="about-img">
                     </div>
                 </div>
                 <div class="about-text animate-on-scroll" style="transition-delay: 0.2s;">
-                    <h3>The Mind Behind The Future</h3>
-                    <p>I'm a forward-thinking developer with over a decade of experience creating immersive web experiences and pioneering IoT solutions. My work focuses on bridging the digital and physical worlds through innovative technology.</p>
-                    <p>What sets me apart is my ability to anticipate technological trends and implement solutions that feel like they're from the future. I specialize in creating interfaces that adapt to users through AI and connecting physical devices to the digital ecosystem.</p>
-                    <p>When I'm not developing, I contribute to open-source projects, experiment with quantum computing concepts, and advise startups on future-proof technology strategies.</p>
+                    <h3>Professional Web Developer</h3>
+                    <p>I'm a passionate web developer with over 8 years of experience creating modern, responsive websites and applications. My focus is on delivering high-quality solutions that meet both business objectives and user needs.</p>
+                    <p>What sets me apart is my attention to detail and commitment to writing clean, maintainable code. I specialize in front-end development but also have strong back-end skills, allowing me to deliver complete solutions.</p>
+                    <p>When I'm not coding, I enjoy contributing to open-source projects, learning new technologies, and sharing my knowledge through blog posts and tutorials.</p>
                     
                     <div class="skills">
-                        <h4>Future-Ready Skillset</h4>
+                        <h4>Technical Skills</h4>
                         <div class="skill-tags">
-                            <span class="skill-tag"><i class="fab fa-react"></i> React 2050</span>
-                            <span class="skill-tag"><i class="fas fa-brain"></i> AI Integration</span>
-                            <span class="skill-tag"><i class="fas fa-network-wired"></i> IoT Systems</span>
-                            <span class="skill-tag"><i class="fas fa-vr-cardboard"></i> WebXR</span>
-                            <span class="skill-tag"><i class="fas fa-robot"></i> Robotics</span>
-                            <span class="skill-tag"><i class="fas fa-project-diagram"></i> Neural Networks</span>
-                            <span class="skill-tag"><i class="fas fa-cloud"></i> Quantum Cloud</span>
-                            <span class="skill-tag"><i class="fas fa-code"></i> Web5</span>
-                            <span class="skill-tag"><i class="fas fa-microchip"></i> Nano Tech</span>
-                            <span class="skill-tag"><i class="fas fa-hologram"></i> Holographic UI</span>
+                            <span class="skill-tag"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="skill-tag"><i class="fab fa-react"></i> React</span>
+                            <span class="skill-tag"><i class="fab fa-node-js"></i> Node.js</span>
+                            <span class="skill-tag"><i class="fab fa-vuejs"></i> Vue.js</span>
+                            <span class="skill-tag"><i class="fab fa-sass"></i> Sass</span>
+                            <span class="skill-tag"><i class="fab fa-git"></i> Git</span>
+                            <span class="skill-tag"><i class="fas fa-database"></i> MongoDB</span>
+                            <span class="skill-tag"><i class="fas fa-server"></i> Express</span>
                         </div>
                     </div>
                 </div>
@@ -1732,61 +1698,61 @@
     <!-- Services Section -->
     <section id="services" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Future Services</h2>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Comprehensive digital solutions designed for the next generation of technology.</p>
+            <h2 class="section-title animate-on-scroll">My Services</h2>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Comprehensive web development services tailored to your needs.</p>
             
             <div class="services-grid">
                 <div class="service-card animate-on-scroll">
                     <div class="service-icon">
-                        <i class="fas fa-hologram"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Holographic Web</h3>
-                    <p>Immersive 3D web experiences that project directly into your environment using advanced holographic technology.</p>
+                    <h3>Web Development</h3>
+                    <p>Custom website development from simple landing pages to complex web applications, built with modern technologies and best practices.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
                     <div class="service-icon">
-                        <i class="fas fa-brain"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>Neural Interfaces</h3>
-                    <p>Web interfaces that connect directly to neural networks, allowing thought-controlled navigation and interaction.</p>
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first responsive designs that look great and function perfectly on all devices, from smartphones to desktops.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
                     <div class="service-icon">
-                        <i class="fas fa-atom"></i>
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3>Quantum Web Apps</h3>
-                    <p>Applications powered by quantum computing for unprecedented speed and data processing capabilities.</p>
+                    <h3>E-Commerce</h3>
+                    <p>Custom e-commerce solutions that help you sell products online with secure payment processing and intuitive user interfaces.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.3s;">
                     <div class="service-icon">
-                        <i class="fas fa-city"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>Smart City IoT</h3>
-                    <p>Complete IoT ecosystems for smart cities, connecting infrastructure, transportation, and public services.</p>
+                    <h3>SEO Optimization</h3>
+                    <p>Search engine optimized websites that help you rank higher in search results and attract more organic traffic.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.4s;">
                     <div class="service-icon">
-                        <i class="fas fa-vr-cardboard"></i>
+                        <i class="fas fa-tachometer-alt"></i>
                     </div>
-                    <h3>Mixed Reality</h3>
-                    <p>Seamless blending of AR, VR, and physical environments for fully immersive digital experiences.</p>
+                    <h3>Performance</h3>
+                    <p>Lightning-fast websites optimized for speed and performance to improve user experience and conversion rates.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
                 
                 <div class="service-card animate-on-scroll" style="transition-delay: 0.5s;">
                     <div class="service-icon">
-                        <i class="fas fa-robot"></i>
+                        <i class="fas fa-headset"></i>
                     </div>
-                    <h3>AI Automation</h3>
-                    <p>Self-learning systems that automate complex processes and adapt to user behavior in real-time.</p>
+                    <h3>Maintenance</h3>
+                    <p>Ongoing website maintenance and support to keep your site secure, up-to-date, and running smoothly.</p>
                     <a href="#contact" class="btn btn-outline">Learn More</a>
                 </div>
             </div>
@@ -1796,49 +1762,48 @@
     <!-- Pricing Section -->
     <section id="pricing" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Future Pricing</h2>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Flexible solutions for every stage of your digital evolution.</p>
+            <h2 class="section-title animate-on-scroll">Pricing Plans</h2>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Flexible pricing options for projects of all sizes.</p>
             
             <div class="pricing-grid">
                 <div class="pricing-card animate-on-scroll">
-                    <h3>Digital Foundation</h3>
-                    <div class="price">$9,999<span>/mo</span></div>
+                    <h3>Basic Website</h3>
+                    <div class="price">$999<span>/project</span></div>
                     <ul class="pricing-features">
-                        <li>Holographic Website</li>
-                        <li>Basic AI Integration</li>
-                        <li>Smart Device Connectivity</li>
-                        <li>24/7 Monitoring</li>
-                        <li>Monthly Updates</li>
+                        <li>Custom Design</li>
+                        <li>Up to 5 Pages</li>
+                        <li>Responsive Layout</li>
+                        <li>Basic SEO</li>
+                        <li>1 Month Support</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline">Get Started</a>
                 </div>
                 
-                <div class="pricing-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="pricing-card animate-on-scroll popular" style="transition-delay: 0.2s;">
                     <div class="popular-badge">Most Popular</div>
-                    <h3>Future Ready</h3>
-                    <div class="price">$24,999<span>/mo</span></div>
+                    <h3>Business Website</h3>
+                    <div class="price">$2,499<span>/project</span></div>
                     <ul class="pricing-features">
-                        <li>Neural Interface</li>
-                        <li>Advanced AI System</li>
-                        <li>IoT Ecosystem</li>
-                        <li>Quantum Computing</li>
-                        <li>Weekly Updates</li>
-                        <li>Priority Support</li>
+                        <li>Custom Design</li>
+                        <li>Up to 15 Pages</li>
+                        <li>Advanced Features</li>
+                        <li>SEO Optimization</li>
+                        <li>3 Months Support</li>
+                        <li>CMS Integration</li>
                     </ul>
                     <a href="#contact" class="btn">Get Started</a>
                 </div>
                 
                 <div class="pricing-card animate-on-scroll" style="transition-delay: 0.4s;">
-                    <h3>Enterprise Vision</h3>
-                    <div class="price">$99,999<span>/mo</span></div>
+                    <h3>Web Application</h3>
+                    <div class="price">$4,999<span>/project</span></div>
                     <ul class="pricing-features">
-                        <li>Custom Neural Network</li>
-                        <li>Smart City Integration</li>
-                        <li>Quantum Web App</li>
-                        <li>Mixed Reality Platform</li>
-                        <li>Real-time Updates</li>
-                        <li>Dedicated AI Assistant</li>
-                        <li>24/7 Premium Support</li>
+                        <li>Custom Web App</li>
+                        <li>User Authentication</li>
+                        <li>Database Integration</li>
+                        <li>API Development</li>
+                        <li>6 Months Support</li>
+                        <li>Ongoing Maintenance</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline">Get Started</a>
                 </div>
@@ -1850,79 +1815,79 @@
     <section id="portfolio" class="section">
         <div class="container">
             <div class="portfolio-header animate-on-scroll">
-                <h2 class="section-title">Future Projects</h2>
+                <h2 class="section-title">My Work</h2>
                 <div class="portfolio-filter">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="web">Web</button>
-                    <button class="filter-btn" data-filter="iot">IoT</button>
-                    <button class="filter-btn" data-filter="ai">AI</button>
+                    <button class="filter-btn" data-filter="web">Websites</button>
+                    <button class="filter-btn" data-filter="app">Applications</button>
+                    <button class="filter-btn" data-filter="ecom">E-Commerce</button>
                 </div>
             </div>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">A showcase of groundbreaking projects that define the future of digital interaction.</p>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">A selection of my recent projects showcasing my skills and expertise.</p>
             
             <div class="portfolio-grid">
                 <!-- Web Projects -->
                 <div class="portfolio-item animate-on-scroll" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Holographic Web Interface" class="portfolio-img">
-                    <span class="portfolio-badge">Web</span>
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Corporate Website" class="portfolio-img">
+                    <span class="portfolio-badge">Website</span>
                     <div class="portfolio-overlay">
-                        <h3>Holographic Web Interface</h3>
-                        <p>A revolutionary web interface that projects directly into physical space, allowing 3D interaction without screens.</p>
+                        <h3>Corporate Website</h3>
+                        <p>A modern responsive website for a financial services company with interactive elements and CMS integration.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
                 
-                <!-- IoT Projects -->
-                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.1s;" data-category="iot">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Smart City Network" class="portfolio-img">
-                    <span class="portfolio-badge">IoT</span>
+                <!-- App Projects -->
+                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.1s;" data-category="app">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Task Management App" class="portfolio-img">
+                    <span class="portfolio-badge">Application</span>
                     <div class="portfolio-overlay">
-                        <h3>Smart City Network</h3>
-                        <p>A city-wide IoT network connecting transportation, utilities, and public services into a unified intelligent system.</p>
+                        <h3>Task Management App</h3>
+                        <p>A productivity application built with React and Firebase for real-time task management and collaboration.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
                 
-                <!-- AI Projects -->
-                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.2s;" data-category="ai">
-                    <img src="https://images.unsplash.com/photo-1677442135136-760c813a743d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Neural Interface" class="portfolio-img">
-                    <span class="portfolio-badge">AI</span>
+                <!-- E-Commerce Projects -->
+                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.2s;" data-category="ecom">
+                    <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Online Store" class="portfolio-img">
+                    <span class="portfolio-badge">E-Commerce</span>
                     <div class="portfolio-overlay">
-                        <h3>Neural Interface</h3>
-                        <p>A brain-computer interface that allows direct thought control of digital systems and IoT devices.</p>
+                        <h3>Online Store</h3>
+                        <p>A full-featured e-commerce platform with product catalog, shopping cart, and secure checkout.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
                 
                 <!-- Web Projects -->
                 <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.3s;" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Quantum Web Portal" class="portfolio-img">
-                    <span class="portfolio-badge">Web</span>
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Portfolio Website" class="portfolio-img">
+                    <span class="portfolio-badge">Website</span>
                     <div class="portfolio-overlay">
-                        <h3>Quantum Web Portal</h3>
-                        <p>A web platform powered by quantum computing that delivers instant content and processing worldwide.</p>
+                        <h3>Portfolio Website</h3>
+                        <p>A creative portfolio website for a photographer with gallery functionality and contact form.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
                 
-                <!-- IoT Projects -->
-                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.4s;" data-category="iot">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Nano IoT Network" class="portfolio-img">
-                    <span class="portfolio-badge">IoT</span>
+                <!-- App Projects -->
+                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.4s;" data-category="app">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fitness Tracker" class="portfolio-img">
+                    <span class="portfolio-badge">Application</span>
                     <div class="portfolio-overlay">
-                        <h3>Nano IoT Network</h3>
-                        <p>A microscopic IoT system that monitors and adjusts environments at the molecular level.</p>
+                        <h3>Fitness Tracker</h3>
+                        <p>A mobile-friendly fitness application with workout tracking, progress charts, and social features.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
                 
-                <!-- AI Projects -->
-                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.5s;" data-category="ai">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Self-Learning AI" class="portfolio-img">
-                    <span class="portfolio-badge">AI</span>
+                <!-- E-Commerce Projects -->
+                <div class="portfolio-item animate-on-scroll" style="transition-delay: 0.5s;" data-category="ecom">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Jewelry Store" class="portfolio-img">
+                    <span class="portfolio-badge">E-Commerce</span>
                     <div class="portfolio-overlay">
-                        <h3>Self-Learning AI</h3>
-                        <p>An artificial intelligence system that evolves its own algorithms to solve complex problems.</p>
+                        <h3>Jewelry Store</h3>
+                        <p>An elegant online jewelry store with product customization options and secure payment processing.</p>
                         <a href="#" class="btn">View Case Study</a>
                     </div>
                 </div>
@@ -1933,16 +1898,16 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Future Clients</h2>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Hear from visionary organizations that have embraced tomorrow's technology today.</p>
+            <h2 class="section-title animate-on-scroll">Client Testimonials</h2>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">What my clients say about working with me.</p>
             
             <div class="testimonials-container">
                 <div class="testimonial-slide animate-on-scroll" style="transition-delay: 0.2s;">
-                    <p class="testimonial-content">Ash's holographic web interface transformed our customer engagement. What used to be flat pages are now immersive 3D experiences that project directly into our clients' spaces. The neural interface option has given us an unprecedented competitive advantage in our sector.</p>
+                    <p class="testimonial-content">Ash delivered our new company website ahead of schedule and exceeded our expectations. The site is not only beautiful but also performs exceptionally well. His attention to detail and communication throughout the project were outstanding.</p>
                     <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr. Sarah Chen" class="author-img">
-                        <h4 class="author-name">Dr. Sarah Chen</h4>
-                        <p class="author-title">CTO, Quantum Innovations Inc.</p>
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Johnson" class="author-img">
+                        <h4 class="author-name">Sarah Johnson</h4>
+                        <p class="author-title">Marketing Director, TechCorp</p>
                     </div>
                 </div>
             </div>
@@ -1958,49 +1923,49 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title animate-on-scroll">Contact Future</h2>
-            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Ready to bring your vision into the future? Let's create something extraordinary together.</p>
+            <h2 class="section-title animate-on-scroll">Get In Touch</h2>
+            <p class="section-subtitle animate-on-scroll" style="transition-delay: 0.1s;">Ready to start your project? Contact me today to discuss your requirements.</p>
             
             <div class="contact-container">
                 <div class="contact-info animate-on-scroll">
-                    <h3>Connect With Tomorrow</h3>
+                    <h3>Contact Information</h3>
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-hologram"></i>
+                                <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>Holographic Call</h4>
-                                <a href="#">project.me/ashbangax</a>
+                                <h4>Email</h4>
+                                <a href="mailto:hello@ashbangax.com">hello@ashbangax.com</a>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-brain"></i>
+                                <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>Neural Message</h4>
-                                <a href="#">think@ashbangax.future</a>
+                                <h4>Phone</h4>
+                                <a href="tel:+1234567890">+1 (234) 567-890</a>
                             </div>
                         </div>
                         
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <i class="fas fa-atom"></i>
+                                <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div class="contact-text">
-                                <h4>Quantum Link</h4>
-                                <a href="#">entangle.with/ashbangax</a>
+                                <h4>Location</h4>
+                                <a href="#">San Francisco, CA</a>
                             </div>
                         </div>
                     </div>
                     
                     <div class="social-links">
-                        <a href="#" aria-label="Neural Network"><i class="fas fa-brain"></i></a>
-                        <a href="#" aria-label="Quantum Link"><i class="fas fa-atom"></i></a>
-                        <a href="#" aria-label="Hologram"><i class="fas fa-hologram"></i></a>
-                        <a href="#" aria-label="AI Assistant"><i class="fas fa-robot"></i></a>
+                        <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
                 
@@ -2012,22 +1977,22 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Neural Signature</label>
-                            <input type="email" id="email" class="form-control" required placeholder="Your unique neural pattern">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required placeholder="Your email address">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Project Type</label>
-                            <input type="text" id="subject" class="form-control" required placeholder="Holographic, IoT, AI, etc.">
+                            <input type="text" id="subject" class="form-control" required placeholder="Website, App, etc.">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Vision Description</label>
-                            <textarea id="message" class="form-control" required placeholder="Describe your vision for the future..."></textarea>
+                            <label for="message">Project Details</label>
+                            <textarea id="message" class="form-control" required placeholder="Tell me about your project..."></textarea>
                         </div>
                         
                         <button type="submit" class="btn btn-accent">
-                            <i class="fas fa-paper-plane"></i> Transmit to Future
+                            <i class="fas fa-paper-plane"></i> Send Message
                         </button>
                     </form>
                 </div>
@@ -2040,7 +2005,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo animate-on-scroll">
-                    <i class="fas fa-robot"></i> Ash<span>Bangax</span>
+                    <i class="fas fa-code"></i> Ash<span>Bangax</span>
                 </div>
                 <div class="footer-links animate-on-scroll" style="transition-delay: 0.1s;">
                     <a href="#hero">Home</a>
@@ -2051,14 +2016,14 @@
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-social animate-on-scroll" style="transition-delay: 0.2s;">
-                    <a href="#" aria-label="Neural Network"><i class="fas fa-brain"></i></a>
-                    <a href="#" aria-label="Quantum Link"><i class="fas fa-atom"></i></a>
-                    <a href="#" aria-label="Hologram"><i class="fas fa-hologram"></i></a>
-                    <a href="#" aria-label="AI Assistant"><i class="fas fa-robot"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
                 </div>
             </div>
             <div class="copyright animate-on-scroll" style="transition-delay: 0.3s;">
-                &copy; 2050 Ash Bangax. All Rights Reserved. | Crafted in the Future
+                &copy; 2023 Ash Bangax. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -2069,8 +2034,35 @@
     </a>
 
     <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme or use preferred color scheme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.setAttribute('data-theme', currentTheme);
+            updateThemeIcon(currentTheme);
+        } else if (prefersDarkScheme.matches) {
+            body.setAttribute('data-theme', 'dark');
+            updateThemeIcon('dark');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+        
+        function updateThemeIcon(theme) {
+            themeToggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
         // Mobile Menu Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
@@ -2161,7 +2153,7 @@
             });
         });
         
-        // Form Submission with Holographic Effect
+        // Form Submission
         const contactForm = document.getElementById('contactForm');
         
         contactForm.addEventListener('submit', function(e) {
@@ -2173,51 +2165,30 @@
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Create holographic effect
-            const hologram = document.createElement('div');
-            hologram.style.position = 'fixed';
-            hologram.style.top = '50%';
-            hologram.style.left = '50%';
-            hologram.style.transform = 'translate(-50%, -50%)';
-            hologram.style.width = '300px';
-            hologram.style.height = '200px';
-            hologram.style.background = 'linear-gradient(135deg, rgba(0, 240, 255, 0.2), rgba(255, 0, 240, 0.2))';
-            hologram.style.borderRadius = '20px';
-            hologram.style.border = '1px solid rgba(0, 240, 255, 0.5)';
-            hologram.style.boxShadow = '0 0 50px rgba(0, 240, 255, 0.5), inset 0 0 50px rgba(255, 0, 240, 0.3)';
-            hologram.style.backdropFilter = 'blur(10px)';
-            hologram.style.display = 'flex';
-            hologram.style.flexDirection = 'column';
-            hologram.style.justifyContent = 'center';
-            hologram.style.alignItems = 'center';
-            hologram.style.padding = '2rem';
-            hologram.style.zIndex = '10000';
-            hologram.style.textAlign = 'center';
-            hologram.style.color = 'var(--primary)';
-            hologram.style.fontFamily = "'Orbitron', sans-serif";
-            hologram.style.fontSize = '1.2rem';
-            hologram.innerHTML = `
+            // Create success message
+            const successMessage = document.createElement('div');
+            successMessage.style.position = 'fixed';
+            successMessage.style.top = '50%';
+            successMessage.style.left = '50%';
+            successMessage.style.transform = 'translate(-50%, -50%)';
+            successMessage.style.width = '300px';
+            successMessage.style.padding = '2rem';
+            successMessage.style.background = 'linear-gradient(135deg, var(--primary), var(--secondary))';
+            successMessage.style.borderRadius = '20px';
+            successMessage.style.color = 'white';
+            successMessage.style.textAlign = 'center';
+            successMessage.style.zIndex = '10000';
+            successMessage.innerHTML = `
                 <div style="margin-bottom: 1rem; font-size: 2rem;"><i class="fas fa-check-circle"></i></div>
-                <div>Transmission Successful</div>
-                <div style="font-size: 0.9rem; margin-top: 1rem; color: rgba(224, 240, 255, 0.8);">Your vision has been received by the future</div>
+                <div>Message Sent</div>
+                <div style="font-size: 0.9rem; margin-top: 1rem;">Thank you for your message! I'll get back to you soon.</div>
             `;
             
-            document.body.appendChild(hologram);
+            document.body.appendChild(successMessage);
             
-            // Animate hologram
-            hologram.animate([
-                { opacity: 0, transform: 'translate(-50%, -50%) scale(0.8)' },
-                { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-                { opacity: 1, transform: 'translate(-50%, -50%) scale(1)' },
-                { opacity: 0, transform: 'translate(-50%, -50%) scale(1.2)' }
-            ], {
-                duration: 3000,
-                easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
-            });
-            
-            // Remove hologram after animation
+            // Remove message after 3 seconds
             setTimeout(() => {
-                hologram.remove();
+                successMessage.remove();
                 contactForm.reset();
             }, 3000);
         });
@@ -2225,22 +2196,22 @@
         // Testimonial Slider
         const testimonials = [
             {
-                content: "Ash's holographic web interface transformed our customer engagement. What used to be flat pages are now immersive 3D experiences that project directly into our clients' spaces. The neural interface option has given us an unprecedented competitive advantage in our sector.",
-                name: "Dr. Sarah Chen",
-                title: "CTO, Quantum Innovations Inc.",
+                content: "Ash delivered our new company website ahead of schedule and exceeded our expectations. The site is not only beautiful but also performs exceptionally well. His attention to detail and communication throughout the project were outstanding.",
+                name: "Sarah Johnson",
+                title: "Marketing Director, TechCorp",
                 image: "https://randomuser.me/api/portraits/women/68.jpg"
             },
             {
-                content: "The smart city IoT network Ash developed for us has reduced energy consumption by 47% while improving public services. Their quantum web portal allows real-time monitoring of the entire city's infrastructure with zero latency - something we thought was decades away.",
+                content: "We hired Ash to rebuild our e-commerce platform, and the results have been phenomenal. Our conversion rates increased by 35% and the site is much easier to manage. Highly recommended for any web development project.",
                 name: "Michael Rodriguez",
-                title: "City Administrator, Neo Tokyo",
+                title: "CEO, ShopOnline",
                 image: "https://randomuser.me/api/portraits/men/75.jpg"
             },
             {
-                content: "Ash's neural interface has revolutionized how our employees interact with digital systems. Thought-controlled interfaces have increased productivity by 210% while reducing training time to near zero. This isn't just an evolution - it's a complete paradigm shift.",
-                name: "Elon Tusk",
-                title: "CEO, NeuroLink Systems",
-                image: "https://randomuser.me/api/portraits/men/82.jpg"
+                content: "Ash's work on our web application was exceptional. He understood our complex requirements and delivered a solution that was both powerful and user-friendly. We'll definitely be working with him again.",
+                name: "Emily Chen",
+                title: "CTO, AppSolutions",
+                image: "https://randomuser.me/api/portraits/women/82.jpg"
             }
         ];
         
@@ -2308,113 +2279,6 @@
         // Check on scroll
         window.addEventListener('scroll', checkScroll);
         
-        // Particles.js configuration
-        particlesJS('particles-js', {
-            "particles": {
-                "number": {
-                    "value": 120,
-                    "density": {
-                        "enable": true,
-                        "value_area": 800
-                    }
-                },
-                "color": {
-                    "value": ["#00f0ff", "#ff00f0", "#00ff88"]
-                },
-                "shape": {
-                    "type": "circle",
-                    "stroke": {
-                        "width": 0,
-                        "color": "#000000"
-                    },
-                    "polygon": {
-                        "nb_sides": 5
-                    }
-                },
-                "opacity": {
-                    "value": 0.5,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 1,
-                        "opacity_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "size": {
-                    "value": 3,
-                    "random": true,
-                    "anim": {
-                        "enable": true,
-                        "speed": 4,
-                        "size_min": 0.1,
-                        "sync": false
-                    }
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 200,
-                    "color": "#00f0ff",
-                    "opacity": 0.2,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 3,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false,
-                    "attract": {
-                        "enable": false,
-                        "rotateX": 600,
-                        "rotateY": 1200
-                    }
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": {
-                        "enable": true,
-                        "mode": "grab"
-                    },
-                    "onclick": {
-                        "enable": true,
-                        "mode": "push"
-                    },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": {
-                        "distance": 200,
-                        "line_linked": {
-                            "opacity": 0.5
-                        }
-                    },
-                    "bubble": {
-                        "distance": 400,
-                        "size": 40,
-                        "duration": 2,
-                        "opacity": 8,
-                        "speed": 3
-                    },
-                    "repulse": {
-                        "distance": 200,
-                        "duration": 0.4
-                    },
-                    "push": {
-                        "particles_nb": 4
-                    },
-                    "remove": {
-                        "particles_nb": 2
-                    }
-                }
-            },
-            "retina_detect": true
-        });
-        
         // Add active class to nav links based on scroll position
         const sections = document.querySelectorAll('section');
         
@@ -2435,86 +2299,6 @@
                 if (link.getAttribute('href') === '#' + current) {
                     link.classList.add('active');
                 }
-            });
-        });
-        
-        // Create floating holograms randomly
-        function createFloatingHolograms() {
-            const colors = ['#00f0ff', '#ff00f0', '#00ff88'];
-            
-            setInterval(() => {
-                if (Math.random() > 0.7) { // 30% chance to create a hologram
-                    const hologram = document.createElement('div');
-                    const size = Math.random() * 100 + 50;
-                    const color = colors[Math.floor(Math.random() * colors.length)];
-                    
-                    hologram.style.position = 'fixed';
-                    hologram.style.width = `${size}px`;
-                    hologram.style.height = `${size}px`;
-                    hologram.style.background = `radial-gradient(circle, ${color}40, transparent 70%)`;
-                    hologram.style.borderRadius = '50%';
-                    hologram.style.boxShadow = `0 0 ${size/2}px ${color}`;
-                    hologram.style.left = `${Math.random() * 100}vw`;
-                    hologram.style.top = '-100px';
-                    hologram.style.zIndex = '-1';
-                    hologram.style.opacity = '0';
-                    
-                    document.body.appendChild(hologram);
-                    
-                    // Animate hologram floating down
-                    const animation = hologram.animate([
-                        { top: '-100px', opacity: 0 },
-                        { top: '20vh', opacity: 0.3 },
-                        { top: '100vh', opacity: 0 }
-                    ], {
-                        duration: Math.random() * 10000 + 5000,
-                        easing: 'linear'
-                    });
-                    
-                    animation.onfinish = () => {
-                        hologram.remove();
-                    };
-                }
-            }, 1000);
-        }
-        
-        // Start creating floating holograms
-        createFloatingHolograms();
-        
-        // Add futuristic cursor effect
-        const cursor = document.createElement('div');
-        cursor.style.position = 'fixed';
-        cursor.style.width = '20px';
-        cursor.style.height = '20px';
-        cursor.style.borderRadius = '50%';
-        cursor.style.background = 'radial-gradient(circle, var(--primary), transparent 70%)';
-        cursor.style.pointerEvents = 'none';
-        cursor.style.zIndex = '9999';
-        cursor.style.transform = 'translate(-50%, -50%)';
-        cursor.style.opacity = '0';
-        document.body.appendChild(cursor);
-        
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = `${e.clientX}px`;
-            cursor.style.top = `${e.clientY}px`;
-            cursor.style.opacity = '1';
-        });
-        
-        document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-        });
-        
-        document.querySelectorAll('a, button').forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.style.width = '40px';
-                cursor.style.height = '40px';
-                cursor.style.background = 'radial-gradient(circle, var(--accent), transparent 70%)';
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.style.width = '20px';
-                cursor.style.height = '20px';
-                cursor.style.background = 'radial-gradient(circle, var(--primary), transparent 70%)';
             });
         });
     </script>
